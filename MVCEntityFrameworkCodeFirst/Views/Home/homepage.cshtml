@@ -1,0 +1,51 @@
+﻿@using MVCEntityFrameworkCodeFirst.Models.ViewModel
+@model HomepageViewModel
+@{
+    ViewBag.Title = "homepage";
+}
+
+<div class="container">
+    <div class="row">
+        <hr />  
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+              @Html.ActionLink("Yeni Kişi", "Yeni", "Kisi", null, new { @class="btn btn-primary" })
+            </div>
+            <br />
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <h5>Kişiler</h5> 
+                </li>
+                @foreach (var item in Model.Kisiler)
+                {
+                    <li class="list-group-item">
+                     <span class="glyphicon glyphicon-user kirmizi"></span> <b>@(item.Ad+" "+item.Soyad)</b><i>(@item.Yas)</i>
+                    </li>
+                }
+
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                @Html.ActionLink("Yeni Adres", "Yeni", "Adres", null, new { @class = "btn btn-primary" })
+            </div>
+            <br />
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <h5>Adresler</h5>
+                </li>
+                @foreach (var item in Model.Adresler)
+                {
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-home yesil"></span> <b> @item.AdresTanim </b> <i> (@(item.Kisi.Ad+" "+item.Kisi.Soyad))</i>
+                    </li>
+                }
+
+            </ul>
+
+        </div>
+    </div>
+</div>
